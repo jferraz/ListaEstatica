@@ -1,0 +1,203 @@
+LISTA_VAZIA()
+LISTA_CHEIA()
+
+ADICIONAR_FINAL(e)
+REMOVER_FINAL()
+
+ADICIONAR_INICIO(e)
+REMOVER_INICIO()
+
+ADICIONAR_POSICAO(e, i)
+REMOVER_POSICAO(i)
+
+*************************
+
+LISTA_VAZIA() {
+
+se numero_elementos = 0
+
+retorne VERDADEIRO
+
+senão
+
+retorne FALSO
+
+fim-se
+
+LISTA_CHEIA() {
+
+se numero_elementos >= vetor_elementos.tamanho - 1
+
+retorne VERDADEIRO
+
+senão
+
+retorne FALSO
+
+fim-se
+
+}
+
+ADICIONAR_FINAL(e) {
+
+se LISTA_CHEIA()
+
+erro “Estrutura cheia!”
+
+senão
+
+indice ← numero_elementos
+
+vetor_elementos[indice] ← e
+
+numero_elementos ← numero_elementos + 1
+
+fim-se
+
+}
+
+REMOVER_FINAL() {
+
+se LISTA_VAZIA()
+
+erro “Estrutura vazia!”
+
+senão
+
+indice ← numero_elementos – 1
+
+elemento_removido ← vetor_elementos[indice]
+
+numero_elementos ← indice
+
+retorne elemento_removido
+
+fim-se
+
+}
+
+ADICIONAR_INICIO(e) {
+
+se LISTA_CHEIA()
+
+erro “Estrutura cheia!”
+
+senão
+
+para indice de numero_elementos a 0 faça
+
+vetor_elementos[indice] ←
+
+vetor_elementos[indice - 1]
+
+fim-para
+
+vetor_elementos[0] ← e
+
+numero_elementos ← numero_elementos + 1
+
+fim-se
+
+}
+
+REMOVER_INICIO() {
+
+se LISTA_VAZIA()
+
+erro “Estrutura vazia!”
+
+senão
+
+elemento_removido ← vetor_elementos[0]
+
+para indice de 1 a numero_elementos - 1 faça
+
+vetor_elementos[indice - 1] ←
+
+vetor_elementos[indice]
+
+fim-para
+
+numero_elementos ← numero_elementos – 1
+
+retorne elemento_removido
+
+fim-se
+
+}
+
+ADICIONAR_POSICAO(e, i) {
+
+se LISTA_CHEIA()
+
+erro “Estrutura cheia!”
+
+senão
+
+se i <= 0
+
+ADICIONAR_INICIO(e)
+
+senão se i >= numero_elementos
+
+ADICIONAR_FINAL(e)
+
+senão
+
+para indice de numero_elementos a i faça
+
+vetor_elementos[indice] ←
+
+vetor_elementos[indice - 1]
+
+fim-para
+
+vetor_elementos[i] ← e
+
+numero_elementos ← numero_elementos + 1
+
+fim-se
+
+fim-se
+
+}
+
+REMOVER_POSICAO(i) {
+
+se LISTA_VAZIA()
+
+erro “Estrutura vazia!”
+
+senão
+
+se i <= 0
+
+retorne REMOVER_INICIO()
+
+senão se i >= numero_elementos
+
+retorne REMOVER_FINAL()
+
+senão
+
+elemento_removido ← vetor_elementos[i]
+
+para indice de i a numero_elementos - 1 faça
+
+vetor_elementos[indice] ←
+
+vetor_elementos[indice + 1]
+
+fim-para
+
+numero_elementos ← numero_elementos – 1
+
+retorne elemento_removido
+
+fim-se
+
+fim-se
+
+}
+
+fim-classe Lista
